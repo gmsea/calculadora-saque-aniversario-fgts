@@ -18,14 +18,14 @@
         <section class="calculator">
 
             <div class=inputs>
-                <input type="text" placeholder="Saldo do FGTS">
-                <input type="text" placeholder="Saldo Atual">
+                <input id="saldoFgts" type="text" placeholder="Saldo do FGTS">
+                <input id="salario" type="text" placeholder="Salario Atual">
 
-                <select>
+                <select id="mesNascimento">
                     <option value="">Mês de nascimento</option>
-                    <option value="jan">Janeiro</option>
-                    <option value="fev">Fevereiro</option>
-                    <option value="mar">Março</option>
+                    <option>Janeiro</option>
+                    <option>Fevereiro</option>
+                    <option>Março</option>
                     <option value="abr">Abril</option>
                     <option value="mai">Maio</option>
                     <option value="Junho">Junho</option>
@@ -37,7 +37,7 @@
                     <option value="dez">Dezembro</option>
                 </select>
 
-                <button>Calcular</button>
+                <button id="btnCalcular">Calcular</button>
             </div>
 
             <div class="resultado">
