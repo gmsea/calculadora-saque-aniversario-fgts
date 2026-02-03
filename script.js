@@ -7,36 +7,49 @@ const valorSaqueEl = document.querySelector('#valorSaque');
 btnCalcular.addEventListener('click', function () {
     const saldoFgts = Number(saldoFgtsInput.value);
     const salario = Number(salarioInput.value);
-    const mesNascimento = mesNascimentoSelect.value;
+    const mesNascimento = Number(mesNascimentoSelect.value);
     let percentual = 0;
     let parcelaFixa = 0;
 
-    if (saldoFgts <= 0 || salario <= 0 || mesNascimento === '') {
+    if (saldoFgts <= 0 || salario <= 0 || mesNascimento === 0) {
         alert('Preencha todos os campos corretamente.');
         return
     }
 
-    if (saldoFgts <= 500) {
+    const depositoMensal = salario * 0.08;
+    const mesAtual = new Date().getMonth() + 1;
+    let mesesAteAniversario;
+
+    if (mesNascimento >= mesAtual) {
+        mesesAteAniversario = mesNascimento - mesAtual;
+    } else {
+        mesesAteAniversario = (12 - mesAtual) + mesNascimento;
+    }
+
+    const saldoProjetado = saldoFgts + (depositoMensal * mesesAteAniversario)
+
+
+    if (saldoProjetado <= 500) {
         percentual = 0.5;
         parcelaFixa = 0;
 
-    } else if (saldoFgts <= 1000) {
+    } else if (saldoProjetado <= 1000) {
         percentual = 0.4;
         parcelaFixa = 50;
 
-    } else if (saldoFgts <= 5000) {
+    } else if (saldoProjetado <= 5000) {
         percentual = 0.3;
         parcelaFixa = 150;
 
-    } else if (saldoFgts <= 10000) {
+    } else if (saldoProjetado <= 10000) {
         percentual = 0.2;
         parcelaFixa = 650;
 
-    } else if (saldoFgts <= 15000) {
+    } else if (saldoProjetado <= 15000) {
         percentual = 0.15;
         parcelaFixa = 1150;
 
-    } else if (saldoFgts <= 20000) {
+    } else if (saldoProjetado <= 20000) {
         percentual = 0.1;
         parcelaFixa = 1900;
 
@@ -45,9 +58,11 @@ btnCalcular.addEventListener('click', function () {
         parcelaFixa = 2900;
     }
 
-    const valorSaque = (saldoFgts * percentual) + parcelaFixa;
-    valorSaqueEl.innerHTML = `R$ ${valorSaque.toFixed(2)}`;
-
+    const valorSaque = (saldoProjetado * percentual) + parcelaFixa;
+    valorSaqueEl.innerHTML = valorSaque.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
 
 });
 
