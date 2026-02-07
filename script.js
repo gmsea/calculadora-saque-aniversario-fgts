@@ -2,11 +2,14 @@ const saldoFgtsInput = document.querySelector('#saldoFgts');
 const salarioInput = document.querySelector('#salario');
 const mesNascimentoSelect = document.querySelector('#mesNascimento');
 const btnCalcular = document.querySelector('#btnCalcular');
-const valorSaqueEl = document.querySelector('#valorSaque'); 
+const valorSaqueEl = document.querySelector('#valorSaque');
+const saldoFgtsValor = document.querySelector('#saldoFgtsValor');
+const somaLancamentosEl = document.querySelector('#somaLancamentos');
+const saldoTotalEL = document.querySelector('#saldoTotal');
 
 btnCalcular.addEventListener('click', function () {
-    const saldoFgts = Number(saldoFgtsInput.value);
-    const salario = Number(salarioInput.value);
+    const saldoFgts = Number(saldoFgtsInput.value.replace(/\D/g, ''))/100;
+    const salario = Number(salarioInput.value.replace(/\D/g, ''))/100;
     const mesNascimento = Number(mesNascimentoSelect.value);
     let percentual = 0;
     let parcelaFixa = 0;
@@ -27,6 +30,22 @@ btnCalcular.addEventListener('click', function () {
     }
 
     const saldoProjetado = saldoFgts + (depositoMensal * mesesAteAniversario)
+
+    saldoFgtsValor.innerHTML = saldoFgts.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
+
+    somaLancamentosEl.innerHTML = (depositoMensal * mesesAteAniversario).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
+
+    saldoTotalEL.innerHTML = saldoProjetado.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
+
 
 
     if (saldoProjetado <= 500) {
@@ -65,4 +84,17 @@ btnCalcular.addEventListener('click', function () {
     });
 
 });
+
+saldoFgtsInput.addEventListener('input', () => {
+    let valor = saldoFgtsInput.value.replace(',', '.').replace(/\D/g, '');
+    valor = (valor / 100).toFixed(2);
+    saldoFgtsInput.value = `R$ ${valor.replace('.', ',')}`;
+});
+
+salarioInput.addEventListener('input', () => {
+    let valor = salarioInput.value.replace(',', '.').replace(/\D/g, '');
+    valor = (valor / 100).toFixed(2);
+    salarioInput.value = `R$ ${valor.replace('.', ',')}`;
+});
+
 
