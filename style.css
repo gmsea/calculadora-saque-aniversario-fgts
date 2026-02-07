@@ -9,19 +9,20 @@ body {
     background: #001f3f;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
 
 }
 
 .container {
-    width: 900px;
-    max-width: 1100px;
-    background: #ffffff;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    max-width: 900px;
+    background: #001f3f;
     display: flex;
     border-radius: 30px;
     overflow: hidden;
-    margin: 100 auto;
     
 }
 
@@ -75,6 +76,7 @@ body {
     font-size: 12px;
     font-weight: 500;
     margin-bottom: 3px;
+    margin-left: 5px;
     color: #0a2a66;
 }
 
@@ -148,6 +150,16 @@ button:hover {
 .destaque h2 {
     font-size: 32px;
     color: #0c4a6e;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    color: #ffd717;
+    background-color: #083358;
+    margin-top: 30px;
 }
 
 @media (max-width: 900px) {
