@@ -12,33 +12,44 @@
     <main class="container">
         <section class="info">
             <h1>Calculadora<br>Saque Aniversário</h1>
-            <p>Simule aqui o valor do seu Saque Aniversário do seu FTGS</p>
+            <p>Simule aqui o valor do seu <br>Saque Aniversário do seu FTGS</p>
         </section>
 
         <section class="calculator">
 
             <div class=inputs>
-                <input id="saldoFgts" type="text" placeholder="Saldo do FGTS">
-                <input id="salario" type="text" placeholder="Salario Atual">
 
-                <select id="mesNascimento">
-                    <option value="">Mês de nascimento</option>
-                    <option value="1">Janeiro</option>
-                    <option value="2">Fevereiro</option>
-                    <option value="3">Março</option>
-                    <option value="4">Abril</option>
-                    <option value="5">Maio</option>
-                    <option value="6">Junho</option>
-                    <option value="7">Julho</option>
-                    <option value="8">Agosto</option>
-                    <option value="9">Setembro</option>
-                    <option value="10">Outubro</option>
-                    <option value="11">Novembro</option>
-                    <option value="12">Dezembro</option>
-                </select>
+                <div class="input-group">
+                    <label>Saldo do FGTS</label>
+                    <input type="text" id="saldoFgts" placeholder="R$ 0,00">
+                </div>
 
-                <button id="btnCalcular">Calcular</button>
+                <div class="input-group">
+                    <label>Salário atual</label>
+                    <input type="text" id="salario" placeholder="R$ 0,00">
+                </div>
+
+                <div class="input-group">
+                    <label>Mês de nascimento</label>
+                    <select id="mesNascimento">
+                        <option value="1">Janeiro</option>
+                        <option value="2">Fevereiro</option>
+                        <option value="3">Março</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Maio</option>
+                        <option value="6">Junho</option>
+                        <option value="7">Julho</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                </div>
             </div>
+            </div>
+            
+            <button id="btnCalcular">Calcular</button>
 
             <div class="resultado">
                 <p>Saldo do FGTS: <strong>R$ 0,00</strong></p>
@@ -47,7 +58,7 @@
 
                 <div class="destaque">
                     <p>Sua previsão de saque</p>
-                    <h2 id="valorSaque"> R$ 0,00</h2>
+                    <h2 id="valorSaque">R$ 0,00</h2>
                 </div>
             </div>
         </section>
